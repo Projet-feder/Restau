@@ -2,7 +2,7 @@
 session_start();
   require '../Database/connect.php' ; 
    
-	$sql = "SELECT * FROM `user` where id= '".$_SESSION['id']."'";
+	$sql = "SELECT * FROM `user` where `user_id` = '".$_SESSION['id']."'";
   $exec_requete = mysqli_query($con,$sql);
   $reponse = mysqli_fetch_array($exec_requete);
 
@@ -15,18 +15,7 @@ session_start();
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Edit profile page </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" type="text/css" rel="stylesheet" >
-    
-</head>
-<body>
-
+  <?php require '../components/menu.php' ;  ?> 
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <div class="container bootstrap snippets bootdeys">
@@ -133,8 +122,8 @@ session_start();
   </div>
   </div>
   </form>
-  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
+  
+  <?php require '../components/footer.php' ;  ?> 
+
     
 

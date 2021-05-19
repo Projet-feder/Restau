@@ -24,6 +24,7 @@ function addToCart(val){
   http.send();
 }
 
+
 /*------------------------------------
 Admin_view Toggle 
 ------------------------------------*/
@@ -57,3 +58,18 @@ $(document).ready(function(){
     $(".updates").show();
   });
 });
+
+/*---------------------------------------------------
+  Admin Delete Prpduct 
+  -------------------------------------------------------*/
+  function deleteProduct(val){
+    let http = new XMLHttpRequest() ; 
+    http.onreadystatechange = ()=> {
+        if (this.readyState == 4 && this.status == 200){
+            console.log('Done') ; 
+        }
+    } ; 
+    http.open( "GET" ,"../Database/deleteProduct.php?q=" + val.value, true);
+    http.send();
+  }
+  

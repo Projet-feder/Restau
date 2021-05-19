@@ -45,7 +45,7 @@ unset($_SESSION['info']);
                 <li><a href="#"><span class="fab fa-github"></span></a></li>
             </ul>
             <div class="block"> 
-                <label class="sign">Don't have an account ? <a href="signup.php" class="link">Sign Up !</a> <span class=""></span> </label> 
+                <label class="sign">Don't have an account ? <a href="signup_view.php" class="link">Sign Up !</a> <span class=""></span> </label> 
                 <br>
                 <label class="pass"> <a href="#" class="link"> Forgot your password ?</a> <span class="pass"></span> </label> 
             </div>

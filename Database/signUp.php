@@ -2,19 +2,12 @@
 session_start();
 // connect to the database
 require '../Database/connect.php' ; 
-
 // REGISTER USER
   // receive all input values from the form
 if($_POST)
 {
   extract($_POST);
-  $nom = $_POST['nom'];
-  $prenom = $_POST['prenom'];
-  $email = $_POST['email'];
-  $dates = $_POST['date'];
-  $tel = $_POST['tel'];
-  $sexe = $_POST['sexe'];
-  $mdp1 = $_POST['mdp1'];
+  
 
   if ($mdp1 == $mdp2) {
 
@@ -27,19 +20,19 @@ if($_POST)
   
   if ($user) { // if user exists
     $_SESSION['alerte']="email exist" ;
-    header('location: signup.php');
+    header('location: ../public/login_view.php');
 
   }
   else{
     // Finally, register user if there are no errors in the form
     //encrypt the password before saving in the database
     $password = md5($mdp1);
-  	$query = "INSERT INTO user_info (`user_id`, `first_name`, `last_name`, `email`, `password`, `mobile`, `address1`, `address2`)
-  			  VALUES($nom ,'$prenom' , '$email','$password', '$dates','$tel','$sexe')";
+  	$query = "INSERT INTO user (property, user_name, user_surname, email, password, date, tel, sexe)
+  			  VALUES(0,'$nom','$prenom' , '$email','$password', '$dates','$tel','$sexe')";
       mysqli_query($con, $query);
       $_SESSION['info']="signup with success" ;
       $_SESSION['email']=$email;
-      header('location: log.php');
+      header('location: ../public/login_view.php');
 
       
   }
@@ -47,12 +40,9 @@ if($_POST)
   } 
   else{
     $_SESSION['alerte']="password doesn't match" ;
-    header('location: signup.php');
+    header('location: ../public/signup_view.php');
     
   }
-  
-  
-
   
 }
 ?>

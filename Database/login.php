@@ -12,16 +12,17 @@ if(isset($_POST['email']) && isset($_POST['password']))
     $password = md5($_POST['password']);
     if($email !== "" && $password !== "")
     {
-        $requete = "SELECT * FROM user where email = '".$email."' and mdp = '".$password."' ";
+        $requete = "SELECT * FROM user where email = '".$email."' and password = '".$password."' ";
         $exec_requete = mysqli_query($con,$requete);
         $count = mysqli_num_rows($reponse);
-        $reponse      = mysqli_fetch_array($exec_requete);
+        $reponse = mysqli_fetch_array($exec_requete);
         //if($count!=0) // nom d'utilisateur et mot de passe correctes
         //{
            $_SESSION['email'] = $email;
-           $id=$reponse['id'];
+           $id=$reponse['user_id'];
            $_SESSION['id'] = $id;
-           if ($reponce['property']==0) {
+           print_r($reponce['property']) ; 
+           if ($reponce['property'] != 0 ) {
             header('Location: ../public/update_view.php');
            }else{
             header('Location: ../public/admin_view.php');
@@ -35,12 +36,12 @@ if(isset($_POST['email']) && isset($_POST['password']))
     }
     else
     {
-       header('Location: log.php?erreur=2'); // utilisateur ou mot de passe vide
+       header('Location: ../public/signup_view.php?erreur=2'); // utilisateur ou mot de passe vide
     }
 }
 else
 {
-   header('Location: login_view.php');
+   header('Location: ../public/signup_view.php');
 }
 
 ?>

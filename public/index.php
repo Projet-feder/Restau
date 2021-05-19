@@ -6,20 +6,29 @@
 <div id="actualite" class="actualite-area col-lg-12 col-md-12 col-sm-12 ">                  
     <div id="carouselControl" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <?php
-                echo "<div class=\"carousel-item active\">
-                <img src=\"../images/Actualite/1.jpg\" class=\"d-block w-100\" alt=\"...\">
-                </div>" ; 
-            ?>
+        
             
             <div class="carousel-item">
                 <img src="../images/Actualite/1.jpg" class="d-block w-100" alt="...">
                 <h3>
                     We've been Making The Delicious Foods Since 1999
 
-                    Fusce hendrerit malesuada lacinia. Donec semper semper sem vitae malesuada. Proin scelerisque risus et ipsum semper molestie sed in nisi. Ut rhoncus congue lectus, rhoncus venenatis leo malesuada id.
                 </h3>
+                <div class="content-holder">
+                <div class="content-holder col-md-12 col-lg-12 col-sm-12">
+                    <button type="button" class="btn btn-primary" id="btn" data-bs-toggle="modal" data-bs-target="#TableReservation">
+                        Reservate a Table  
+                    </button>
+                </div>
             </div>
+            <?php
+                echo "<div class=\"carousel-item active\">
+                    
+            
+           
+            </div>
+                </div>" ; 
+            ?>
             <div class="carousel-item">
                 <img src="../images/Actualite/161011_xe44c_mlarge_restaurant_serveur_sn1250.webp" class="d-block w-100" alt="...">
             </div>
@@ -54,7 +63,7 @@
                                         </div>
 
                                         <div class="wow fadeInUp" data-wow-delay="0.4s">
-                                            <p>Fusce hendrerit malesuada lacinia. Donec semper semper sem vitae malesuada. Proin scelerisque risus et ipsum semper molestie sed in nisi. Ut rhoncus congue lectus, rhoncus venenatis leo malesuada id.</p>
+                                            <p>Bienvenue dans notre réstaurant ! c’est l’héritage de la cuisine turque dans son coté généreux et savoureux qui caractérisent nos plats.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +91,7 @@
                             <div class="row zoom image1">
                                 <div class="menu-item">
                                             <h3>Breakfast</h3>
-                                                <p>Tomato / Eggs / Sausage</p>
+                                                <p>Coffee / Eggs / Brunch</p>
                                             </div>
                                 </div> 
                             <div class="cont1 row">
@@ -95,8 +104,8 @@
                                 </div>       
                                 <div class="image3 zoom col-md-6"> 
                                         <div class="menu-item">
-                                             <h3>Coffee</h3>
-                                             <p>Green / Fruits / Healthy</p>
+                                             <h3>Dessert</h3>
+                                             <p>Ice Cream / Fruits / Healthy</p>
                                         </div>
                                        
                                 </div>
@@ -106,9 +115,8 @@
                             <div class="image4 zoom ">
                                         <div class="menu-item">
                                              <h3>Delevery</h3>
-                                             <p>Green / Fruits / Healthy</p>
+                                             <p>Plat / Breakfast / Dessert</p>
                                         </div>
-
                             </div>
                                         
                         </div>

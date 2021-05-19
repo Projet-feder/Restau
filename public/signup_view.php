@@ -16,18 +16,8 @@ unset($_SESSION['alerte']);
 ?>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>SignUp</title>
-<link href="../signupi.css" type="text/css" rel="stylesheet" >
 
-
-<meta charset="UTF-8">
-</head>
-
-<body>
-
+<?php require '../components/menu.php' ; ?> 
 
 
 <div class="wrapper">
@@ -89,13 +79,11 @@ unset($_SESSION['alerte']);
   </div><br>
 
   <p>
-  		déja membre? <a href="login.php">Sign in</a>
+  		déja membre? <a href="login_view.php">Sign in</a>
   </p>
     
   
 </form>
 </div>
 
-
-</body>
-</html>
+<?php require '../components/footer.php' ; ?> 

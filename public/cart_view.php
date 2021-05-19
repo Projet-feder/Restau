@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once '../Database/connect.php' ; 
 if (isset($_GET)){
     if (isset($_GET['q'])){
         $id=$_GET['q'];
@@ -29,7 +29,9 @@ if (isset($_GET)){
           }else{
           
             foreach($_SESSION['cart'] as $key=> $value){
-                // insert into table key value (product id , qte ) ; 
+                $date=date('Y-M-D') ;
+                $req = "INSERT INTO `reservation`( `user_id`, `product_id`, `qte`, `date`) 
+                VALUES (".$_SESSION['id'].",$key,$value,$date)"  ;
                 
             }
             // vider la session 
@@ -59,65 +61,7 @@ function remove($param){
         box-sizing: border-box;
     }
 
-    .cart{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .content-holder{
-        background: rgba( 255, 255, 255, 0.75 );
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 4px );
-        -webkit-backdrop-filter: blur( 4px );
-        border-radius: 10px;
-        border: 1px solid rgba( 255, 255, 255, 0.18 );
-        position: relative;
-        top: 50px;
-        width: 90%;
-        height: 90%;
-    }
-
-    .shopping-cart, .oder-summary{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .oder-summary{
-        background: rgba( 189, 189, 189, 0.50 );
-        border-radius: 5px;
-    }
-
-    .divider{
-        width: 100%;
-        border: 0.5px black solid;
-    }
-    .title h3{
-        position: relative;
-        top: 20px;
-    }
-
-    /*-- table ---*/
-
-    table,.Order-details{
-        margin: 30px;
-    }
-    .cart button {
-        width: 100px;
-        height: 25px;
-        margin: 5px;
-        border-radius: 10px;
-        border: 0px;
-    }
-
-    .cart .Checkout-btn{
-        width: 50%;
-        background-color: green;
-    }
+    
 
 </style>
 <?php  require "../components/menu.php" ; ?> 
@@ -150,36 +94,32 @@ function remove($param){
                     </thead>
                     <tbody>
                     <?php
-                        $Total = 0 ;  
+                        $Total = 0 ; 
+                        $counter =0;
                         if (empty($_SESSION['cart'])){
                             echo "<p> no Product  </p> ";
                         }else{
                             foreach ($_SESSION['cart'] as $key => $val) {
-                                //$sql = "select * from plat where id = $key ";
-                                //$result = mysqli_query($con,$sql) or die("bad query: $sql");
-                                //$row = mysqli_fetch_assoc($result);
-                                //$price = $val * $row['prix'];
-                                //$Total += $price;
+                                $counter+=1 ; 
+                                $sql = "select * from product where prod_id = $key ";
+                                
+                                $result = mysqli_query($con,$sql) or die("bad query: $sql");
+                                
+                                $row = mysqli_fetch_assoc($result);
+                                
+                                $price = $val * $row['prod_prix_unit'];
+                                
+                            $Total += $price;
                             
-                            /*echo " <tr>
-                            <td>".$row['id']."</td>
-                            <button> - </button> 
+                            
+                                echo " <tr>
+                            <td>".$row['prod_id']."</td>
                             <td>".$val."</td>
-                            <button> + </button> 
-                            <td>".$row['price']."</td>
+                            <td>".$row['prod_prix_unit']."</td>
                             <td>".$price."</td>
                             
-                            </tr>" ;*/
-                            $price = $val * 2500 ; 
-                            $Total += $price ; 
-                            echo " <tr>
-                            <td>".$key."</td>
-                             
-                            <td>".$val."</td>
-                           
-                            <td>2500</td>
-                            <td>".$price."</td>
                             </tr>" ;
+                            
                             
                             }
                         }
@@ -187,7 +127,7 @@ function remove($param){
                     </tbody>
                     
                 </table>
-                <a href="#"><button class="Checkout-btn">Continue Shopping</button></a>  
+                <a href="menu.php"><button class="Checkout-btn">Back to Shopping</button></a>  
                 
             </div>
             <div class="oder-summary col-sm-4 col-md-4 col-lg-4">
@@ -199,15 +139,15 @@ function remove($param){
                 <span class="divider"></span>
                 <div class="Order-details">
                    <h4>
-                    <?php echo '3' ;?> Items
+                    <?php echo  $counter ;?> Items
                    </h4>   
                    <h4>
                        Total Price 
-                       <?php echo '580' ;?> TND
+                       <?php echo $Total ;?> TND
                    </h4> 
                     
-                    <a href="cart_view.php?clearCart=true"><button>Clear Cart</button></a>
-                    <a href="cart_view.php?confirm=true"><button > Confirm</button></a>
+                    <a href="cart_view.php?clearCart=true"><button class="clear-btn">Clear Cart</button></a>
+                    <a href="cart_view.php?confirm=true"><button class="confirm-btn"> Confirm</button></a>
                     
                 </div>
                 
